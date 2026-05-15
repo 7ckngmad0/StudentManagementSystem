@@ -1,0 +1,7 @@
+/bin/
+*.class
+
+.settings/
+
+# Hide passwords/configs if needed
+*.properties
