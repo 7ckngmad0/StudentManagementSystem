@@ -1,8 +1,8 @@
 package main;
 
-import window.LoginFrame;
-
 import javax.swing.SwingUtilities;
+
+import welcome.LoginFrame;
 
 public class MainApp {
     public static void main(String[] args) {

@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Carl/AppData/Local/Microsoft/Windows/INetCache/IE/3AX14F6O/mysql-connector-j-9.7.0[1].jar">
+	<classpathentry kind="lib" path="C:/vscode/OOP/mysql-connector-j-9.7.0/mysql-connector-j-9.7.0/mysql-connector-j-9.7.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
