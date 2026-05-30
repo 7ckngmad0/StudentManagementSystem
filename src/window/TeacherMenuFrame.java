@@ -19,21 +19,24 @@ public class TeacherMenuFrame extends JFrame {
         setSize(400, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(5, 1, 10, 10));
+        setLayout(new GridLayout(6, 1, 10, 10));
 
         JLabel welcomeLabel = new JLabel("Welcome, Professor " + loggedInUser.getUsername() + "!", SwingConstants.CENTER);
         JButton viewButton = new JButton("View Students");
+        JButton addButton = new JButton("Add Student");
         JButton searchButton = new JButton("Search Student");
         JButton reportButton = new JButton("Generate Report");
         JButton logoutButton = new JButton("Logout");
 
         add(welcomeLabel);
         add(viewButton);
+        add(addButton);
         add(searchButton);
         add(reportButton);
         add(logoutButton);
 
         viewButton.addActionListener(e -> new ViewStudentFrame().setVisible(true));
+        addButton.addActionListener(e -> new AddStudentFrame().setVisible(true));
         searchButton.addActionListener(e -> new SearchStudentFrame().setVisible(true));
         reportButton.addActionListener(e -> new ReportFrame().setVisible(true));
 
