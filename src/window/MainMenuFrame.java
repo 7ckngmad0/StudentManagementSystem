@@ -1,6 +1,8 @@
 package window;
 
 import javax.swing.*;
+import welcome.LoginFrame;
+
 import java.awt.*;
 
 public class MainMenuFrame extends JFrame {
