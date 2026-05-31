@@ -1,11 +1,8 @@
 package window;
 
 import javax.swing.*;
-<<<<<<< HEAD
 
 import model.User;
-=======
->>>>>>> origin/add-grading-module
 import welcome.LoginFrame;
 
 import java.awt.*;

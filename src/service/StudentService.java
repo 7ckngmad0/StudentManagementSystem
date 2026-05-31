@@ -152,4 +152,33 @@ public class StudentService {
 
         return "No report generated.";
     }
+    public java.util.ArrayList<Object[]> getAllStudents() {
+        java.util.ArrayList<Object[]> students = new java.util.ArrayList<>();
+
+        String sql = "SELECT * FROM students";
+
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Object[] row = {
+                    rs.getInt("student_id"),
+                    rs.getString("student_number"),
+                    rs.getString("first_name") + " " + rs.getString("last_name"),
+                    rs.getString("course"),
+                    rs.getInt("year_level")
+                };
+
+                students.add(row);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Get Students Error: " + e.getMessage());
+        }
+
+        return students;
+    }
+    
 }
