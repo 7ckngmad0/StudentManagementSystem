@@ -1,0 +1,13 @@
+
+.metadata/
+
+bin/
+
+.classpath
+
+.project
+
+.settings/
+
+*.class
+
