@@ -71,7 +71,7 @@ public class RegisterFrame extends JFrame{
 	    	boolean success = service.register(username, password, role);
 	    	
 	    	if(success) {
-	    		JOptionPane.showMessageDialog(this, "Account Registered Successfully!");
+	    		JOptionPane.showMessageDialog(this, "Registration submitted. Please wait for admin approval before logging in.");
 	    		new LoginFrame().setVisible(true);
 	    		dispose();
 	    	} else {

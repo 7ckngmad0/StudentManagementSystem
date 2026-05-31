@@ -19,7 +19,7 @@ public class MainMenuFrame extends JFrame {
         setSize(400, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(8, 1, 10, 10));
+        setLayout(new GridLayout(9, 1, 10, 10));
         
         JLabel welcomeLabel = new JLabel("Welcome, Admin " + loggedInUser.getUsername() + "!", SwingConstants.CENTER);
         JButton addButton = new JButton("Add Student");
@@ -28,6 +28,7 @@ public class MainMenuFrame extends JFrame {
         JButton updateButton = new JButton("Update Student");
         JButton deleteButton = new JButton("Delete Student");
         JButton reportButton = new JButton("Generate Report");
+        JButton approveUsersButton = new JButton("Approve Accounts");
         JButton logoutButton = new JButton("Logout");
 
         add(welcomeLabel);
@@ -37,6 +38,7 @@ public class MainMenuFrame extends JFrame {
         add(updateButton);
         add(deleteButton);
         add(reportButton);
+        add(approveUsersButton);
         add(logoutButton);
 
         addButton.addActionListener(e -> new AddStudentFrame().setVisible(true));
@@ -45,6 +47,7 @@ public class MainMenuFrame extends JFrame {
         updateButton.addActionListener(e -> new UpdateStudentFrame().setVisible(true));
         deleteButton.addActionListener(e -> new DeleteStudentFrame().setVisible(true));
         reportButton.addActionListener(e -> new ReportFrame().setVisible(true));
+        approveUsersButton.addActionListener(e -> new ApproveUsersFrame().setVisible(true));
 
         logoutButton.addActionListener(e -> {
             new LoginFrame().setVisible(true);
