@@ -10,7 +10,8 @@ import javax.swing.JTextField;
 import service.GradeService;
 
 public class AddGradeFrame extends JFrame {
-    
+	private static final long serialVersionUID = 1L;
+	
     JTextField idf;
     JTextField subf;
     JTextField scoref;
