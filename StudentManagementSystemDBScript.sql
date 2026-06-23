@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS student_record_db;
+CREATE DATABASE student_record_db;
 USE student_record_db;
 
 CREATE TABLE users (
