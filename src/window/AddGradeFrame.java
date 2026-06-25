@@ -59,7 +59,7 @@ public class AddGradeFrame extends JFrame {
                 String scoret = scoref.getText();
 
                 if (idt.equals("") || subt.equals("") || scoret.equals("")) {
-                    JOptionPane.showMessageDialog(null, "fill up everything dude");
+                    JOptionPane.showMessageDialog(null, "Please Fill Entries First");
                     return;
                 }
 
@@ -72,7 +72,7 @@ public class AddGradeFrame extends JFrame {
                 }
 
                 if (badId == true) {
-                    JOptionPane.showMessageDialog(null, "id should be numbers only");
+                    JOptionPane.showMessageDialog(null, "ID should be numbers only");
                     return;
                 }
 

@@ -135,22 +135,64 @@ public class StudentService {
 
     //student report
     public String generateReport() {
-        String sql = "SELECT COUNT(*) AS total FROM students"; //counts all rows in the table
+        StringBuilder report = new StringBuilder();
 
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
-                return "Student Report\n\nTotal Students: " + rs.getInt("total"); //kukunin nya yung total number ng students
+            // Total Students
+            PreparedStatement ps1 =
+                    conn.prepareStatement("SELECT COUNT(*) AS total FROM students");
+            ResultSet rs1 = ps1.executeQuery();
+
+            if (rs1.next()) {
+                report.append("Total Students: ")
+                      .append(rs1.getInt("total"))
+                      .append("\n\n");
+            }
+
+            // Students per Course
+            report.append("Students Per Course:\n");
+
+            PreparedStatement ps2 =
+                    conn.prepareStatement(
+                            "SELECT course, COUNT(*) AS total " +
+                            "FROM students GROUP BY course");
+
+            ResultSet rs2 = ps2.executeQuery();
+
+            while (rs2.next()) {
+                report.append(rs2.getString("course"))
+                      .append(": ")
+                      .append(rs2.getInt("total"))
+                      .append("\n");
+            }
+
+            report.append("\n");
+
+            // Students per Year Level
+            report.append("Students Per Year Level:\n");
+
+            PreparedStatement ps3 =
+                    conn.prepareStatement(
+                            "SELECT year_level, COUNT(*) AS total " +
+                            "FROM students GROUP BY year_level");
+
+            ResultSet rs3 = ps3.executeQuery();
+
+            while (rs3.next()) {
+                report.append("Year ")
+                      .append(rs3.getInt("year_level"))
+                      .append(": ")
+                      .append(rs3.getInt("total"))
+                      .append("\n");
             }
 
         } catch (Exception e) {
             return "Report Error: " + e.getMessage();
         }
 
-        return "No report generated.";
+        return report.toString();
     }
     public java.util.ArrayList<Object[]> getAllStudents() {
         java.util.ArrayList<Object[]> students = new java.util.ArrayList<>();
@@ -179,6 +221,84 @@ public class StudentService {
         }
 
         return students;
+    }
+    
+    //get total students
+    public int getTotalStudents() {
+        try {
+            Connection conn = DBConnection.getConnection();
+
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "SELECT COUNT(*) AS total FROM students");
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Count Error: " + e.getMessage());
+        }
+
+        return 0;
+    }
+    
+    //get students per course
+    public java.util.ArrayList<Object[]> getStudentsPerCourse() {
+        java.util.ArrayList<Object[]> data = new java.util.ArrayList<>();
+
+        try {
+            Connection conn = DBConnection.getConnection();
+
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "SELECT course, COUNT(*) AS total " +
+                            "FROM students GROUP BY course");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                data.add(new Object[]{
+                        rs.getString("course"),
+                        rs.getInt("total")
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("Course Report Error: " + e.getMessage());
+        }
+
+        return data;
+    }
+    
+    //get students per year
+    public java.util.ArrayList<Object[]> getStudentsPerYearLevel() {
+        java.util.ArrayList<Object[]> data = new java.util.ArrayList<>();
+
+        try {
+            Connection conn = DBConnection.getConnection();
+
+            PreparedStatement ps =
+                    conn.prepareStatement(
+                            "SELECT year_level, COUNT(*) AS total " +
+                            "FROM students GROUP BY year_level");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                data.add(new Object[]{
+                        rs.getInt("year_level"),
+                        rs.getInt("total")
+                });
+            }
+
+        } catch (Exception e) {
+            System.out.println("Year Report Error: " + e.getMessage());
+        }
+
+        return data;
     }
     
 }
